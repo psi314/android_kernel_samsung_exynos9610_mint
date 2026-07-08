@@ -16,9 +16,10 @@ jobs:
         type: [oneui-12-e]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
+          fetch-depth: 0
 
       - uses: szenius/set-timezone@v1.0
         with:
@@ -33,6 +34,12 @@ jobs:
 
       - name: Install Debian/Ubuntu dependencies
         run: sudo apt-get install bzip2 lib32stdc++6 libc6-dev-i386 libncurses5 jq -y
+
+      - name: Unshallow and Update KernelSU Submodule
+        run : |
+          cd KernelSU
+          git fetch --unshallow || true
+          git fetch --tags
 
       - name: Parse build arguments
         run: |
