@@ -473,7 +473,8 @@ fi
 merge_config "partial-deknox-$BUILD_ANDROID_PLATFORM"
 merge_config "mali-$BUILD_ANDROID_PLATFORM"
 merge_config "variant_$BUILD_VARIANT"
-
+merge_config "droidspaces"
+# Install workflow dependencies and essential kernel building tools
 if $BUILD_KERNEL_KSU; then
     if [[ $BUILD_VARIANT == recovery ]]; then
         script_echo "I: Recovery variant selected."
